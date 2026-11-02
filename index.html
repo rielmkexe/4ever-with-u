@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Flipbook — July 4, 2026</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Nunito:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Main Flipbook Component -->
+        <div class="book-viewport">
+            <div class="book" id="book">
+                
+                <!-- COVER SHEET (Sheet 1) -->
+                <div class="sheet sheet-cover" id="sheet-1" style="z-index: 5;">
+                    <!-- Front of Sheet 1: Lock Screen -->
+                    <div class="page page-front cover-front">
+                        <div class="cover-border">
+                            <div class="lock-icon"><i class="fas fa-heart"></i></div>
+                            <h1 class="cover-title">Our Story</h1>
+                            <p class="cover-subtitle">Locked with Love</p>
+
+                            <div class="passcode-box">
+                                <label class="clue-text"><i class="fas fa-lightbulb"></i> Clue: The day we officially became us — MMDD</label>
+                                <div class="pin-display">
+                                    <input type="password" maxlength="1" class="pin-dot" readonly>
+                                    <input type="password" maxlength="1" class="pin-dot" readonly>
+                                    <input type="password" maxlength="1" class="pin-dot" readonly>
+                                    <input type="password" maxlength="1" class="pin-dot" readonly>
+                                </div>
+                                <div class="numpad">
+                                    <button class="num-btn" onclick="pressPin('1')">1</button>
+                                    <button class="num-btn" onclick="pressPin('2')">2</button>
+                                    <button class="num-btn" onclick="pressPin('3')">3</button>
+                                    <button class="num-btn" onclick="pressPin('4')">4</button>
+                                    <button class="num-btn" onclick="pressPin('5')">5</button>
+                                    <button class="num-btn" onclick="pressPin('6')">6</button>
+                                    <button class="num-btn" onclick="pressPin('7')">7</button>
+                                    <button class="num-btn" onclick="pressPin('8')">8</button>
+                                    <button class="num-btn" onclick="pressPin('9')">9</button>
+                                    <button class="num-btn special" onclick="clearPin()"><i class="fas fa-backspace"></i></button>
+                                    <button class="num-btn" onclick="pressPin('0')">0</button>
+                                    <button class="num-btn special" onclick="submitPin()"><i class="fas fa-check"></i></button>
+                                </div>
+                                <p id="pin-error" class="error-msg"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Back of Sheet 1: Chapter 1 Left Page -->
+                    <div class="page page-back">
+                        <div class="page-number">1</div>
+                        <h2 class="chapter-title">Chapter 1: The Spark</h2>
+                        <div class="polaroid-wrapper">
+                            <div class="polaroid">
+                                <div class="photo-placeholder">
+                                    <i class="fas fa-camera-retro"></i>
+                                    <span>Our First Memory</span>
+                                </div>
+                                <p class="polaroid-caption">Where everything began ✨</p>
+                            </div>
+                        </div>
+                        <p class="story-p">Looking back at how far we've come, every moment spent with you feels like a beautiful dream come true.</p>
+                    </div>
+                </div>
+
+                <!-- SHEET 2 -->
+                <div class="sheet" id="sheet-2" style="z-index: 4;">
+                    <!-- Front of Sheet 2: Chapter 1 Right Page -->
+                    <div class="page page-front">
+                        <div class="page-number">2</div>
+                        <h2 class="chapter-title">Little Things I Love</h2>
+                        <ul class="love-list">
+                            <li><i class="fas fa-check-circle"></i> The way your smile brightens up my worst days.</li>
+                            <li><i class="fas fa-check-circle"></i> Our endless conversations and midnight laughs.</li>
+                            <li><i class="fas fa-check-circle"></i> How comfortable and safe I feel around you.</li>
+                            <li><i class="fas fa-check-circle"></i> Every little gesture that shows how much you care.</li>
+                        </ul>
+                        <div class="quote-card">
+                            "You are my favorite thought every single day."
+                        </div>
+                    </div>
+                    <!-- Back of Sheet 2: Music Player Left Page -->
+                    <div class="page page-back">
+                        <div class="page-number">3</div>
+                        <h2 class="chapter-title">Our Song</h2>
+                        <div class="music-card">
+                            <div class="vinyl-container">
+                                <div class="vinyl-record" id="vinyl">
+                                    <div class="vinyl-label">
+                                        <i class="fas fa-music"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="track-info">
+                                <h3 class="track-title" id="track-title">Pasilyo</h3>
+                                <p class="track-artist" id="track-artist">SunKissed Lola</p>
+                            </div>
+
+                            <div class="player-controls">
+                                <div class="progress-bar-box" onclick="seekTrack(event)">
+                                    <div class="progress-fill" id="progress-fill"></div>
+                                </div>
+                                <div class="time-display">
+                                    <span id="current-time">0:00</span>
+                                    <span id="total-duration">0:00</span>
+                                </div>
+                                <div class="btn-group">
+                                    <button class="ctrl-btn" onclick="togglePlay()"><i class="fas fa-play" id="play-icon"></i></button>
+                                </div>
+                            </div>
+
+                            <audio id="audio-player" src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-acoustic-guitar-112169.mp3"></audio>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SHEET 3 -->
+                <div class="sheet" id="sheet-3" style="z-index: 3;">
+                    <!-- Front of Sheet 3: Music Player Memory Right Page -->
+                    <div class="page page-front">
+                        <div class="page-number">4</div>
+                        <h2 class="chapter-title">The Memory Behind It</h2>
+                        
+                        <div class="memory-note-box">
+                            <div class="pin-head"></div>
+                            <p class="memory-text">
+                                <i class="fas fa-quote-left"></i> 
+                                I remember the first day of our late night talks when we started talking. 
+                                <i class="fas fa-quote-right"></i>
+                            </p>
+                        </div>
+
+                        <div class="lyric-card">
+                            <div class="lyric-header"><i class="fas fa-heart"></i> Favorite Line</div>
+                            <p class="lyric-text">"Araw-araw kong dala-dala<br>Paboritong panalangin ko'y<br>Makasama ka sa pagtanda"</p>
+                        </div>
+
+                        <div class="note-footer">
+                            <i class="fas fa-headphones"></i> Put on your earphones for the best vibe!
+                        </div>
+                    </div>
+                    <!-- Back of Sheet 3: Letter Left Page -->
+                    <div class="page page-back">
+                        <div class="page-number">5</div>
+                        <h2 class="chapter-title">Monthsary Letter</h2>
+                        <div class="letter-container">
+                            <p class="letter-greeting">My Dearest,</p>
+                            <p class="letter-body">
+                                Happy Monthsary! Every single moment with you brings so much warmth and happiness to my heart. 
+                                Thank you for being my favorite person, my listener, and my best friend.
+                            </p>
+                            <p class="letter-body">
+                                Here's to more laughs, shared meals, late night talks, and building endless memories together.
+                            </p>
+                            <p class="letter-closing">Forever Yours,</p>
+                            <p class="letter-signature">Me ❤️</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SHEET 4 (Back Cover) -->
+                <div class="sheet sheet-back" id="sheet-4" style="z-index: 2;">
+                    <!-- Front of Sheet 4: Coupons Right Page -->
+                    <div class="page page-front">
+                        <div class="page-number">6</div>
+                        <h2 class="chapter-title">Love Vouchers</h2>
+                        <p class="voucher-subtitle">Click to redeem anytime!</p>
+                        
+                        <div class="coupons-grid">
+                            <div class="coupon-card" id="coupon-1">
+                                <div class="coupon-badge"><i class="fas fa-gift"></i> Voucher #1</div>
+                                <h4>Unlimited Kiss Voucher</h4>
+                                <button class="redeem-btn" onclick="redeemCoupon(1)">Redeem Now</button>
+                            </div>
+                            <div class="coupon-card" id="coupon-2">
+                                <div class="coupon-badge"><i class="fas fa-gift"></i> Voucher #2</div>
+                                <h4>FREE VCUT TREAT</h4>
+                                <button class="redeem-btn" onclick="redeemCoupon(2)">Redeem Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Back of Sheet 4: Back Hardcover -->
+                    <div class="page page-back cover-back">
+                        <div class="cover-border">
+                            <i class="fas fa-heart back-heart"></i>
+                            <h3>To Be Continued...</h3>
+                            <p>Our story is just getting started.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- External Navigation Controls -->
+        <div class="nav-bar">
+            <button class="nav-btn" id="prev-btn" onclick="prevPage()"><i class="fas fa-chevron-left"></i> Prev</button>
+            <span class="page-indicator" id="page-indicator">Cover</span>
+            <button class="nav-btn" id="next-btn" onclick="nextPage()">Next <i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
